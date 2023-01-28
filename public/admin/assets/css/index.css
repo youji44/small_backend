@@ -1,0 +1,29 @@
+body{
+    background-color: var(--main-color) !important;
+    /* background-image: linear-gradient(to right, var(--main-color) , #fff) !important; */
+}
+.login-form-cover{
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+}
+.login-form{
+    width: 450px;
+    background-color: white;
+    border-radius: 3px;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+}
+.login-form img{
+    width: 290px;
+}
+@media only screen and (max-width: 510px) {
+    .login-form{
+        width: 93%;
+    }
+}
+@media only screen and (max-width: 390px) {
+    .login-form img{
+        width: 200px;
+    }
+}
