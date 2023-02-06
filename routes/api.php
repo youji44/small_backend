@@ -43,24 +43,23 @@ Route::post('/updateStatus',[DetailController::class,'updateStatus']);
 Route::delete('/deleteUserDetail/{id}',[DetailController::class,'deleteUserDetail']);
 //CheckApi
 Route::get('/CheckApi',[DetailController::class,'CheckApi']);
-
-
+Route::get('/visit',[DetailController::class,'visit']);
 
 //pusher
 Route::get('/pusher',[DetailController::class,'pusher']);
 
 //getNotification
-Route::get('/getNotification',[LoginController::class,'getNotification']);
+Route::get('/getNotification',[NotificationController::class,'getNotification']);
 //getNotificationCount
 Route::get('/getNotificationCount',[NotificationController::class,'getNotificationCount']);
 //deleteGetNotification
-Route::delete('/deleteGetNotification/{id}',[LoginController::class,'deleteGetNotification']);
+Route::delete('/deleteGetNotification/{id}',[NotificationController::class,'deleteGetNotification']);
 //unreadNotification
-Route::get('/unreadNotification',[LoginController::class,'unreadNotification']);
+Route::get('/unreadNotification',[NotificationController::class,'unreadNotification']);
 //ViewNotification
-Route::get('/ViewNotification',[LoginController::class,'ViewNotification']);
+Route::get('/ViewNotification',[NotificationController::class,'ViewNotification']);
 //deleteNotification
-Route::delete('/deleteNotification/{id}',[LoginController::class,'deleteNotification']);
+Route::delete('/deleteNotification/{id}',[NotificationController::class,'deleteNotification']);
 
 
 
