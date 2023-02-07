@@ -14,12 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/form',[DetailController::class,'viewForm']);
-
 //justTest
 Route::post('/justTest',[DetailController::class,'justTest']);
-
+Route::group(array('prefix' => 'dashboard', 'middleware' => 'App\Http\Middleware\SentinelGuest'), function () {
+    Route::group(array('middleware' => 'App\Http\Middleware\SentinelAdmin'), function () {
+        Route::get('/', array('as' => 'dashboard', 'uses' => 'admin\AdminController@index'));
+        Route::post('/detail/update', array('as' => 'user.detail.update', 'uses' => 'admin\AdminController@update_detail'));
+        Route::get('/detail/delete/{id}', array('as' => 'user.detail.delete', 'uses' => 'admin\AdminController@delete_detail'));
+    });
+});
+/**
+ * Auth
+ */
+//Route::get('admin', function () {return redirect('admin/login');});
+Route::get('/', array('as' => 'login', 'uses' => 'admin\UserController@index'));
+Route::get('login', array('as' => 'login', 'uses' => 'admin\UserController@index'));
+Route::post('login', array('as' => 'login', 'uses' => 'admin\UserController@loginAdmin'));
+Route::get('logout', array('as' => 'logout', 'uses' => 'admin\UserController@getLogout'));

@@ -1,6 +1,5 @@
 (function ($) {
     "use strict";
-    CKEDITOR.replaceAll('editor'); 
     $( "#datepicker" ).datepicker({
         changeMonth: true,
         changeYear: true,
@@ -65,6 +64,5 @@
 	});
 
     $('.icp_demo').iconpicker();
-
 
 })(jQuery);
