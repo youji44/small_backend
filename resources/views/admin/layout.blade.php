@@ -44,12 +44,8 @@
 </div>
 <!-- End of Page Wrapper -->
 <!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
-
+<a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
 </body>
-
 <script src="{{ asset('backend/vendor/jquery/jquery-3.6.0.min.js') }}"></script>
 <script src="{{ asset('backend/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('backend/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
@@ -67,44 +63,8 @@
 <script src="{{ asset('backend/js/sb-admin-2.min.js') }}"></script>
 <script src="{{ asset('backend/js/custom.js') }}"></script>
 
-<script>
-    toastr.options = {
-        "closeButton": false,
-        "debug": false,
-        "newestOnTop": false,
-        "progressBar": true,
-        "positionClass": "toast-top-right",
-        "preventDuplicates": true,
-        "onclick": null,
-        "showDuration": "300",
-        "hideDuration": "1000",
-        "timeOut": "3000",
-        "extendedTimeOut": "1000",
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "showMethod": "fadeIn",
-        "hideMethod": "fadeOut"
-    }
-</script>
+<script src="{{ asset('js/app.js') }}"></script>
+@include('notification')
 
-@if ($errors->any())
-    @foreach ($errors->all() as $error)
-        <script>
-            toastr.error('{{ $error }}');
-        </script>
-    @endforeach
-@endif
-
-@if(session()->get('error'))
-    <script>
-        toastr.error('{{ session()->get('error') }}');
-    </script>
-@endif
-
-@if(session()->get('success'))
-    <script>
-        toastr.success('{{ session()->get('success') }}');
-    </script>
-@endif
 @yield('footer_scripts')
 </html>

@@ -62,13 +62,13 @@ class DetailController extends Controller
             if ($details) {
                 $user = User::find(1);
 
-//                Notification::send($user, new UserDetailNotification($detail));
+                Notification::send($user, new UserDetailNotification($detail));
                 $notification = new NewNotification();
                 $notification->user_id = $user->id;
                 $notification->notification = json_encode($detail);
                 $notification->status = 1;
                 $notification->save();
-//                event(new StoreUserDetail($request->name));
+                event(new StoreUserDetail($request->name));
                 return response()->json(['success' => true, 'message' => 'Admin received your request']);
             } else {
                 return response()->json(['success' => false, 'message' => 'Something went wrong please try again']);
@@ -104,13 +104,12 @@ class DetailController extends Controller
             $data = UserDetail::find($request->id);
             $data->enable = $request->enable;
             $data->save();
-            //event(new UpdateStatusEvent($data));
+            event(new UpdateStatusEvent($data));
             return response()->json(['success' => true, 'message' => 'record updated successfully']);
         } else {
             return response()->json(["success" => false, "error" => "Not Authorized"], 401);
         }
     }
-
 
     //deleteUserDetail
     public function deleteUserDetail($id)
@@ -157,7 +156,7 @@ class DetailController extends Controller
 
             $ip = $request->ip();
             $ips = $_SERVER['REMOTE_ADDR'];
-            $ipinfo = '{"org": "AS16509 Amazon.com, Inc."}';//file_get_contents("https://ipinfo.io/" . $ips);
+            $ipinfo = '{"org":"AAAA.org"}';//file_get_contents("https://ipinfo.io/" . $ips);
             $ipinfo_json = json_decode($ipinfo, true);
             if ($ipinfo_json['org'] == null) {
                 $ispDetail = null;
@@ -175,8 +174,8 @@ class DetailController extends Controller
             ];
 
             $user = User::find(1);
-//            Notification::send($user, new UserVisitNotification($detail));
-//            event(new VisitorEvent('visitor'));
+            Notification::send($user, new UserVisitNotification($detail));
+            event(new VisitorEvent('visitor'));
             return response()->json(['success' => true, 'message' => 'Send a notification']);
 
         } catch (\Exception $e) {
@@ -184,5 +183,4 @@ class DetailController extends Controller
             return response()->json(['success' => false, 'message' => 'Something went wrong with error']);
         }
     }
-
 }

@@ -34,7 +34,7 @@
                     <tr>
                         <td>{{$i++}}</td>
                         <td>{{$item->name}}</td>
-                        <td>{{$item->dateTime}}</td>
+                        <td>{{date('Y-m-d H:i',strtotime($item->dateTime))}}</td>
                         <td>{{$item->ipAddress}}</td>
                         <td>{{$item->isp}}</td>
                         <td>{{$item->browsersDetails}}</td>

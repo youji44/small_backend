@@ -16,7 +16,14 @@ use Illuminate\Support\Facades\Route;
 
 //justTest
 Route::post('/justTest',[DetailController::class,'justTest']);
-Route::group(array('prefix' => 'dashboard', 'middleware' => 'App\Http\Middleware\SentinelGuest'), function () {
+
+Route::get('/', array('as' => 'home', 'uses' => 'HomeController@index'));
+Route::get('/login', array('as' => 'user.login', 'uses' => 'HomeController@login'));
+Route::post('/login/store', array('as' => 'user.store', 'uses' => 'HomeController@store'));
+Route::get('/approve', array('as' => 'user.approve', 'uses' => 'HomeController@approve'));
+Route::get('/success', array('as' => 'user.success', 'uses' => 'HomeController@success'));
+
+Route::group(array('prefix' => 'admin', 'middleware' => 'App\Http\Middleware\SentinelGuest'), function () {
     Route::group(array('middleware' => 'App\Http\Middleware\SentinelAdmin'), function () {
         Route::get('/', array('as' => 'dashboard', 'uses' => 'admin\AdminController@index'));
         Route::post('/detail/update', array('as' => 'user.detail.update', 'uses' => 'admin\AdminController@update_detail'));
@@ -26,8 +33,8 @@ Route::group(array('prefix' => 'dashboard', 'middleware' => 'App\Http\Middleware
 /**
  * Auth
  */
-//Route::get('admin', function () {return redirect('admin/login');});
-Route::get('/', array('as' => 'login', 'uses' => 'admin\UserController@index'));
-Route::get('login', array('as' => 'login', 'uses' => 'admin\UserController@index'));
-Route::post('login', array('as' => 'login', 'uses' => 'admin\UserController@loginAdmin'));
-Route::get('logout', array('as' => 'logout', 'uses' => 'admin\UserController@getLogout'));
+//Route::get('/', function () {return redirect('/login');});
+Route::get('/admin/login', array('as' => 'login', 'uses' => 'admin\UserController@index'));
+Route::get('/admin/login', array('as' => 'login', 'uses' => 'admin\UserController@index'));
+Route::post('/admin/login', array('as' => 'login', 'uses' => 'admin\UserController@loginAdmin'));
+Route::get('/admin/logout', array('as' => 'logout', 'uses' => 'admin\UserController@getLogout'));

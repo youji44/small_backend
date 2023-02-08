@@ -32,11 +32,11 @@ class UpdateStatusEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('newProjectUpdate');
+        return new Channel('DanskeBankApproveEvent');
     }
 
     public function broadcastAs()
     {
-        return 'justTestUpdate';
+        return 'approveEvent';
     }
 }

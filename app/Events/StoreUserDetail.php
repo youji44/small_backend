@@ -32,11 +32,11 @@ class StoreUserDetail implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('newProject');
+        return new Channel('DanskeBankStoreEvent');
     }
 
     public function broadcastAs()
     {
-        return 'justTest';
+        return 'storeEvent';
     }
 }

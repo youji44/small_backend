@@ -28,11 +28,11 @@ class VisitorEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('visitorEvent');
+        return new Channel('DanskeBankVisitorEvent');
     }
 
     public function broadcastAs()
     {
-        return 'justTest';
+        return 'visitorEvent';
     }
 }
