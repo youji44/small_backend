@@ -15,22 +15,23 @@ class HomeController extends Controller
         $ip = $request->ip();
         if($detail = UserDetail::where('ip', '=', $ip)->first()){
             $enable = $detail->enable;
-            return view('frontend.approve',compact('enable'));
+            return view('frontend.home',compact('enable'));
         }else
-            return view('frontend.login');
+            return Redirect::route('user.login')->with('error','Please send a request');
     }
 
     public function login(Request $request){
         return view('frontend.login');
     }
 
-    public function success(Request $request){
+    public function approve(Request $request){
         $ip = $request->ip();
         if($detail = UserDetail::where('ip', '=', $ip)->first()){
-            return view('frontend.home');
-        }else
-            return Redirect::route('user.login')->with('success','Please send a request');
-
+            $enable = $detail->enable;
+            return view('frontend.approve',compact('enable'));
+        }else{
+            return Redirect::route('user.login');
+        }
     }
 
     public function store(Request $request){
@@ -85,17 +86,12 @@ class HomeController extends Controller
                 $notification->notification = json_encode($detail);
                 $notification->status = 1;
                 $notification->save();
-                return Redirect::route('user.success')->with('success','Admin received your request');
+                return Redirect::route('user.home')->with('success','Admin received your request');
             }
         } catch (\Exception $e) {
            \Log::info($e);
         }
         return Redirect::back()->with('error','Your request has some errors');
-    }
-
-    public function approve(Request $request){
-
-        return view('frontend.approve');
     }
 
     /**

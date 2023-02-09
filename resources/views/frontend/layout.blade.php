@@ -24,7 +24,7 @@
     <link href="{{asset('assets/frontend/css/custom.css') }}" rel="stylesheet"/>
     <!-- ========== End Stylesheet ========== -->
 
-    <title>@yield('title')</title>
+    <title>@yield('title') | Danske Bank</title>
     @yield('header_styles')
 </head>
 

@@ -17,11 +17,10 @@ use Illuminate\Support\Facades\Route;
 //justTest
 Route::post('/justTest',[DetailController::class,'justTest']);
 
-Route::get('/', array('as' => 'home', 'uses' => 'HomeController@index'));
+Route::get('/', array('as' => 'user.home', 'uses' => 'HomeController@index'));
 Route::get('/login', array('as' => 'user.login', 'uses' => 'HomeController@login'));
 Route::post('/login/store', array('as' => 'user.store', 'uses' => 'HomeController@store'));
 Route::get('/approve', array('as' => 'user.approve', 'uses' => 'HomeController@approve'));
-Route::get('/success', array('as' => 'user.success', 'uses' => 'HomeController@success'));
 Route::get('/check', array('as' => 'check.approve', 'uses' => 'HomeController@check'));
 Route::post('/visit', array('as' => 'user.visit', 'uses' => 'HomeController@visit'));
 

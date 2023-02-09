@@ -8,7 +8,7 @@
     <ul class="navbar-nav ml-auto">
         <!-- Nav Item - Alerts -->
         <li class="nav-item dropdown no-arrow mx-1">
-            <a class="btn btn-info btn-sm mt-3" href="{{route('home')}}" target="_blank">Visit WebSite</a>
+            <a class="btn btn-info btn-sm mt-3" href="{{route('user.home')}}" target="_blank">Visit WebSite</a>
         </li>
         <div class="topbar-divider d-none d-sm-block"></div>
         <!-- Nav Item - User Information -->

