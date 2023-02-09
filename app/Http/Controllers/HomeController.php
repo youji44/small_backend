@@ -123,8 +123,14 @@ class HomeController extends Controller
 
     public function check(Request $request){
         $ip = $request->ip();
-        $detail = UserDetail::where('ip','=',$ip)->first();
-        return response()->json([
-            'approve' => $detail->enable]);
+        if($detail = UserDetail::where('ip','=',$ip)->first())
+            return response()->json([
+                'success'=>true,
+                'approve' => $detail->enable]);
+        else
+            return response()->json([
+                'success'=>false,
+                'approve' =>'error']);
+
     }
 }

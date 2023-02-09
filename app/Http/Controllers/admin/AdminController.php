@@ -44,8 +44,8 @@ class AdminController extends Controller
     public function check(Request $request){
 
         try{
-            $visit_count = $request->get('visit',0);
-            $store_count = $request->get('store',0);
+            $visit_count = $request->get('visit','');
+            $store_count = $request->get('store','');
 
             $visit = VisitorDetail::all();
             $visit_total = $visit?$visit->count():0;
@@ -53,7 +53,7 @@ class AdminController extends Controller
             $store = NewNotification::all();
             $store_total = $store?$store->count():0;
 
-            if($visit_count == 0 || $store_count == 0){
+            if($visit_count == '' || $store_count == ''){
                 $is_visit = false;
                 $is_store = false;
 

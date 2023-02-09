@@ -72,14 +72,13 @@
 <script>
     const sound1 = document.getElementById("sound1");
     const sound2 = document.getElementById("sound2");
-    check(0,0);
+    check('','');
     function check(visit_cnt, store_cnt) {
         $.ajax({
             type:'POST',
             url:'{{route('user.check')}}',
             data:{_token:'{{csrf_token()}}', visit:visit_cnt,store:store_cnt},
             success:function(result){
-
                 if(result.visitor){
                     toastr.success('A User is visiting');
                     sound1.play().then(() => {}).catch((error)=>{});
