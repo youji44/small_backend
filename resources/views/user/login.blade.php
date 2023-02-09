@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Login</title>
     <link rel="icon" type="image/png" href="{{asset('logo.svg')}}">
-    <link rel="stylesheet" href="{{ asset('backend/vendor/fontawesome-free/css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/css/fontawesome-iconpicker.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/css/sb-admin-2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/css/toastr.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/css/jquery-ui.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/css/bootstrap4-toggle.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/css/spacing.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/backend/vendor/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/backend/css/fontawesome-iconpicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/backend/css/sb-admin-2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/backend/css/toastr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/backend/css/jquery-ui.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/backend/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/backend/css/bootstrap4-toggle.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/backend/css/spacing.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/backend/css/style.css') }}">
 </head>
 <body class="bg-gradient-primary">
 <div class="container v-center">
@@ -59,15 +59,15 @@
     </div>
 </div>
 </body>
-<script src="{{ asset('backend/vendor/jquery/jquery-3.6.0.min.js') }}"></script>
-<script src="{{ asset('backend/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('backend/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
-<script src="{{ asset('backend/js/toastr.min.js') }}"></script>
-<script src="{{ asset('backend/js/jscolor.js') }}"></script>
-<script src="{{ asset('backend/js/jquery-ui.js') }}"></script>
-<script src="{{ asset('backend/js/select2.min.js') }}"></script>
-<script src="{{ asset('backend/js/bootstrap4-toggle.min.js') }}"></script>
-<script src="{{ asset('backend/js/fontawesome-iconpicker.js') }}"></script>
-<script src="{{ asset('backend/js/sb-admin-2.min.js') }}"></script>
+<script src="{{ asset('assets/backend/vendor/jquery/jquery-3.6.0.min.js') }}"></script>
+<script src="{{ asset('assets/backend/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/backend/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+<script src="{{ asset('assets/backend/js/toastr.min.js') }}"></script>
+<script src="{{ asset('assets/backend/js/jscolor.js') }}"></script>
+<script src="{{ asset('assets/backend/js/jquery-ui.js') }}"></script>
+<script src="{{ asset('assets/backend/js/select2.min.js') }}"></script>
+<script src="{{ asset('assets/backend/js/bootstrap4-toggle.min.js') }}"></script>
+<script src="{{ asset('assets/backend/js/fontawesome-iconpicker.js') }}"></script>
+<script src="{{ asset('assets/backend/js/sb-admin-2.min.js') }}"></script>
 @include('notification')
 </html>

@@ -71,11 +71,6 @@ CREATE TABLE IF NOT EXISTS `new_notifications` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table small.new_notifications: ~2 rows (approximately)
-REPLACE INTO `new_notifications` (`id`, `user_id`, `notification`, `status`, `created_at`, `updated_at`) VALUES
-	(1, 1, '{"detail_id":1,"browser":"Chrome 98.0.4758.102","name":"bruger-d","dateTime":"2023-02-09 03:30:55","ip":"127.0.0.1","isp":"AS16509 Amazon.com, Inc."}', '1', '2023-02-08 20:31:37', '2023-02-08 20:31:37'),
-	(2, 1, '{"detail_id":1,"browser":"Chrome 98.0.4758.102","name":"dsadsadasdsa","dateTime":"2023-02-09 03:32:47","ip":"127.0.0.1","isp":"AS16509 Amazon.com, Inc."}', '1', '2023-02-08 20:33:06', '2023-02-08 20:33:06');
-
 -- Dumping structure for table small.oauth_access_tokens
 CREATE TABLE IF NOT EXISTS `oauth_access_tokens` (
   `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,

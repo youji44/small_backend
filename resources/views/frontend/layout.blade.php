@@ -7,22 +7,23 @@
     <link rel="icon" type="image/png" href="{{asset('logo.png')}}">
 
     <!-- ========== Start Stylesheet ========== -->
-    <link href="{{asset('frontend/assets/css/bootstrap.min.css')}}" rel="stylesheet"/>
-    <link href="{{asset('frontend/assets/css/font-awesome.min.css')}}" rel="stylesheet"/>
-    <link href="{{asset('frontend/assets/css/themify-icons.css')}}" rel="stylesheet"/>
-    <link href="{{asset('frontend/assets/css/flaticon-set.css')}}" rel="stylesheet"/>
-    <link href="{{asset('frontend/assets/css/elegant-icons.css')}}" rel="stylesheet"/>
-    <link href="{{asset('frontend/assets/css/magnific-popup.css')}}" rel="stylesheet"/>
-    <link href="{{asset('frontend/assets/css/owl.carousel.min.css')}}" rel="stylesheet"/>
-    <link href="{{asset('frontend/assets/css/owl.theme.default.min.css')}}" rel="stylesheet"/>
-    <link href="{{asset('frontend/assets/css/animate.css')}}" rel="stylesheet"/>
-    <link href="{{asset('frontend/assets/css/bootsnav.css')}}" rel="stylesheet"/>
-    <link href="{{asset('frontend/assets/css/responsive.css')}}" rel="stylesheet"/>
-    <link rel="stylesheet" href="{{ asset('backend/css/toastr.min.css') }}">
+    <link href="{{asset('assets/frontend/css/bootstrap.min.css')}}" rel="stylesheet"/>
+    <link href="{{asset('assets/frontend/css/font-awesome.min.css')}}" rel="stylesheet"/>
+    <link href="{{asset('assets/frontend/css/themify-icons.css')}}" rel="stylesheet"/>
+    <link href="{{asset('assets/frontend/css/flaticon-set.css')}}" rel="stylesheet"/>
+    <link href="{{asset('assets/frontend/css/elegant-icons.css')}}" rel="stylesheet"/>
+    <link href="{{asset('assets/frontend/css/magnific-popup.css')}}" rel="stylesheet"/>
+    <link href="{{asset('assets/frontend/css/owl.carousel.min.css')}}" rel="stylesheet"/>
+    <link href="{{asset('assets/frontend/css/owl.theme.default.min.css')}}" rel="stylesheet"/>
+    <link href="{{asset('assets/frontend/css/animate.css')}}" rel="stylesheet"/>
+    <link href="{{asset('assets/frontend/css/bootsnav.css')}}" rel="stylesheet"/>
+    <link href="{{asset('assets/frontend/css/responsive.css')}}" rel="stylesheet"/>
+    <link href="{{asset('assets/frontend/css/toastr.min.css') }}" rel="stylesheet"/>
 
+    <link href="{{asset('assets/frontend/css/style.css') }}" rel="stylesheet"/>
+    <link href="{{asset('assets/frontend/css/custom.css') }}" rel="stylesheet"/>
     <!-- ========== End Stylesheet ========== -->
-    <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/custom.css') }}">
+
     <title>@yield('title')</title>
     @yield('header_styles')
 </head>
@@ -47,18 +48,18 @@
 <!-- End of Page Wrapper -->
 </body>
 
-<script src="{{ asset('frontend/assets/js/jquery-3.6.0.min.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/popper.min.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/jquery.appear.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/jquery.easing.min.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/jquery.magnific-popup.min.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/progress-bar.min.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/owl.carousel.min.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/jquery.nice-select.min.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/bootsnav.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/main.js') }}"></script>
-<script src="{{ asset('backend/js/toastr.min.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/jquery-3.6.0.min.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/popper.min.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/jquery.appear.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/jquery.easing.min.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/jquery.magnific-popup.min.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/progress-bar.min.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/jquery.nice-select.min.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/bootsnav.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/main.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/toastr.min.js') }}"></script>
 
 {{--<script src="{{ asset('js/app.js') }}"></script>--}}
 @include('notification')
