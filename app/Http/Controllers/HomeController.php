@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\NewNotification;
 use App\Models\User;
 use App\Models\UserDetail;
+use App\Models\VisitorDetail;
 use Illuminate\Http\Request;
 use Redirect;
 
@@ -12,7 +13,7 @@ class HomeController extends Controller
 {
     public function index(Request $request){
         $ip = $request->ip();
-        if($detail = UserDetail::where('ipAddress', '=', $ip)->first()){
+        if($detail = UserDetail::where('ip', '=', $ip)->first()){
             $enable = $detail->enable;
             return view('frontend.approve',compact('enable'));
         }else
@@ -24,13 +25,18 @@ class HomeController extends Controller
     }
 
     public function success(Request $request){
-        return view('frontend.home');
+        $ip = $request->ip();
+        if($detail = UserDetail::where('ip', '=', $ip)->first()){
+            return view('frontend.home');
+        }else
+            return Redirect::route('user.login')->with('success','Please send a request');
+
     }
 
     public function store(Request $request){
 
         try {
-            if ($request->browsersDetails == null) {
+            if ($request->browser == null) {
                 return response()->json(['success' => false, 'message' => 'Browsers Details is required']);
             }
             if ($request->name == null) {
@@ -52,20 +58,19 @@ class HomeController extends Controller
             }
 
             $details = new UserDetail();
-            $details->browsersDetails = $request->browsersDetails;
+            $details->browser = $request->browser;
             $details->name = $request->name;
             $details->dateTime = $request->dateTime;
-            $details->ipAddress = $ip;
+            $details->ip = $ip;
             $details->isp = $ispDetail;
             $details->enable = 1;
             $details->save();
-            //$detail_id = UserDetail::max('id');
             $detail = [
                 'detail_id' => $details->id,
-                'browsersDetails' => $request->browsersDetails,
+                'browser' => $request->browser,
                 'name' => $request->name,
                 'dateTime' => $request->dateTime,
-                'ipAddress' => $ip,
+                'ip' => $ip,
                 'isp' => $ispDetail,
             ];
 
@@ -102,31 +107,24 @@ class HomeController extends Controller
     public function visit(Request $request){
 
         try {
-
             $ip = $request->ip();
-            $ips = $_SERVER['REMOTE_ADDR'];
-            $ipinfo = '{"org":"AAAA.org"}';//file_get_contents("https://ipinfo.io/" . $ips);
-            $ipinfo_json = json_decode($ipinfo, true);
-            if ($ipinfo_json['org'] == null) {
-                $ispDetail = null;
-            } else {
-                $ispDetail = $ipinfo_json['org'];
-            }
-
-            $detail = [
-                'id' => '',
-                'browsersDetails' => $request->browser,
-                'name' => 'visit',
-                'dateTime' => $request->datetime,
-                'ipAddress' => $ip,
-                'isp' => $ispDetail,
-            ];
+            $visitor = new VisitorDetail();
+            $visitor->browser = $request->browser;
+            $visitor->dateTime = $request->datetime;
+            $visitor->ip = $ip;
+            $visitor->save();
 
             return response()->json(['success' => true, 'message' => 'Send a notification']);
-
         } catch (\Exception $e) {
             \Log::info($e);
             return response()->json(['success' => false, 'message' => 'Something went wrong with error']);
         }
+    }
+
+    public function check(Request $request){
+        $ip = $request->ip();
+        $detail = UserDetail::where('ip','=',$ip)->first();
+        return response()->json([
+            'approve' => $detail->enable]);
     }
 }

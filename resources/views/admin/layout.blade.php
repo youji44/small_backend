@@ -41,6 +41,8 @@
         <!-- End of Main Content -->
     </div>
     <!-- End of Content Wrapper -->
+    <audio id="sound1" src="{{asset('sound/sound1.mp3')}}" style="display: none;"></audio>
+    <audio id="sound2" src="{{asset('sound/sound2.mp3')}}" style="display: none;"></audio>
 </div>
 <!-- End of Page Wrapper -->
 <!-- Scroll to Top Button-->
@@ -63,8 +65,44 @@
 <script src="{{ asset('backend/js/sb-admin-2.min.js') }}"></script>
 <script src="{{ asset('backend/js/custom.js') }}"></script>
 
-<script src="{{ asset('js/app.js') }}"></script>
+{{--<script src="{{ asset('js/app.js') }}"></script>--}}
 @include('notification')
-
 @yield('footer_scripts')
+
+<script>
+    const sound1 = document.getElementById("sound1");
+    const sound2 = document.getElementById("sound2");
+    check(0,0);
+    function check(visit_cnt, store_cnt) {
+        $.ajax({
+            type:'POST',
+            url:'{{route('user.check')}}',
+            data:{_token:'{{csrf_token()}}', visit:visit_cnt,store:store_cnt},
+            success:function(result){
+
+                if(result.visitor){
+                    toastr.success('A User is visiting');
+                    sound1.play().then(() => {}).catch((error)=>{});
+                }
+                if(result.store){
+                    toastr.success('A User login');
+                    sound2.play().then(() => {}).catch((error)=>{});
+                }
+                store_cnt = result.store_count;
+                visit_cnt = result.visit_count;
+                setTimeout(function () {
+                    check(result.visit_count, result.store_count);
+                }, 3000);
+
+            },error:function (e) {
+                console.log(e.message())
+            }});
+    }
+
+    function update(value,id) {
+        $("#enable-"+id).val(value);
+        $("#form-status-"+id).submit();
+    }
+
+</script>
 </html>

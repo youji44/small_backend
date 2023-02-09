@@ -85,4 +85,19 @@
 @endsection
 {{-- page level scripts --}}
 @section('footer_scripts')
+    <script>
+        check();
+        function check() {
+            $.ajax({url:'{{route('check.approve')}}', success: function(result){
+                    if(result.approve != 1){
+                        location.href = '{{route('home')}}';
+                    }
+                    else{
+                        setTimeout(function () {
+                            check();
+                        }, 10000);
+                    }
+                }});
+        }
+    </script>
 @endsection

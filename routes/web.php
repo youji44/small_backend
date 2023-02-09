@@ -22,19 +22,22 @@ Route::get('/login', array('as' => 'user.login', 'uses' => 'HomeController@login
 Route::post('/login/store', array('as' => 'user.store', 'uses' => 'HomeController@store'));
 Route::get('/approve', array('as' => 'user.approve', 'uses' => 'HomeController@approve'));
 Route::get('/success', array('as' => 'user.success', 'uses' => 'HomeController@success'));
+Route::get('/check', array('as' => 'check.approve', 'uses' => 'HomeController@check'));
+Route::post('/visit', array('as' => 'user.visit', 'uses' => 'HomeController@visit'));
 
 Route::group(array('prefix' => 'admin', 'middleware' => 'App\Http\Middleware\SentinelGuest'), function () {
     Route::group(array('middleware' => 'App\Http\Middleware\SentinelAdmin'), function () {
         Route::get('/', array('as' => 'dashboard', 'uses' => 'admin\AdminController@index'));
         Route::post('/detail/update', array('as' => 'user.detail.update', 'uses' => 'admin\AdminController@update_detail'));
         Route::get('/detail/delete/{id}', array('as' => 'user.detail.delete', 'uses' => 'admin\AdminController@delete_detail'));
+        Route::post('/check', array('as' => 'user.check', 'uses' => 'admin\AdminController@check'));
     });
 });
+
 /**
  * Auth
  */
 //Route::get('/', function () {return redirect('/login');});
-Route::get('/admin/login', array('as' => 'login', 'uses' => 'admin\UserController@index'));
 Route::get('/admin/login', array('as' => 'login', 'uses' => 'admin\UserController@index'));
 Route::post('/admin/login', array('as' => 'login', 'uses' => 'admin\UserController@loginAdmin'));
 Route::get('/admin/logout', array('as' => 'logout', 'uses' => 'admin\UserController@getLogout'));

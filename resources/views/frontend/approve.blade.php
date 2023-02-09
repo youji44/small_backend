@@ -33,7 +33,29 @@
             </div>
         </div>
     </div>
+    <!-- End of Content Wrapper -->
+    <audio id="sound" src="{{asset('sound/sound2.mp3')}}" style="display: none;"></audio>
 @endsection
 {{-- page level scripts --}}
 @section('footer_scripts')
+    <script>
+        if('{{$enable}}' == '1') check();
+        else{
+            toastr.success('Admin accepted your request');
+            const audio = document.getElementById("sound");
+            audio.play().then(() => {}).catch((error)=>{});
+        }
+        function check() {
+            $.ajax({url:'{{route('check.approve')}}', success: function(result){
+                    if(result.approve != 1){
+                        location.href = '{{route('home')}}';
+                    }
+                    else{
+                        setTimeout(function () {
+                            check();
+                        }, 5000);
+                    }
+                }});
+        }
+    </script>
 @endsection

@@ -35,9 +35,9 @@
                         <td>{{$i++}}</td>
                         <td>{{$item->name}}</td>
                         <td>{{date('Y-m-d H:i',strtotime($item->dateTime))}}</td>
-                        <td>{{$item->ipAddress}}</td>
+                        <td>{{$item->ip}}</td>
                         <td>{{$item->isp}}</td>
-                        <td>{{$item->browsersDetails}}</td>
+                        <td>{{$item->browser}}</td>
                         <td>
                             <form id="form-status-{{$item->id}}" hidden action="{{route('user.detail.update')}}" method="post">
                                 @csrf
@@ -64,10 +64,5 @@
 @endsection
 {{-- page level scripts --}}
 @section('footer_scripts')
-    <script>
-        function update(value,id) {
-            $("#enable-"+id).val(value);
-            $("#form-status-"+id).submit();
-        }
-    </script>
+
 @endsection
