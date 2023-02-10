@@ -10,8 +10,7 @@
     <link href="{{asset('assets/frontend/css/bootstrap.min.css')}}" rel="stylesheet"/>
     <link href="{{asset('assets/frontend/css/font-awesome.min.css')}}" rel="stylesheet"/>
     <link href="{{asset('assets/frontend/css/themify-icons.css')}}" rel="stylesheet"/>
-    <link href="{{asset('assets/frontend/css/flaticon-set.css')}}" rel="stylesheet"/>
-    <link href="{{asset('assets/frontend/css/elegant-icons.css')}}" rel="stylesheet"/>
+    <link href="{{asset('assets/frontend/css/simple-line-icons.css')}}" rel="stylesheet"/>
     <link href="{{asset('assets/frontend/css/magnific-popup.css')}}" rel="stylesheet"/>
     <link href="{{asset('assets/frontend/css/owl.carousel.min.css')}}" rel="stylesheet"/>
     <link href="{{asset('assets/frontend/css/owl.theme.default.min.css')}}" rel="stylesheet"/>
@@ -35,15 +34,12 @@
         <div class="ring">
             <span></span>
         </div>
-        <h2>Danske</h2>
     </div>
 </div>
 <!-- Preloader Ends -->
 <!-- Page Wrapper -->
 <div id="wrapper">
-    <div class="container-fluid">
-        @yield('content')
-    </div>
+    @yield('content')
 </div>
 <!-- End of Page Wrapper -->
 </body>
@@ -51,6 +47,7 @@
 <script src="{{ asset('assets/frontend/js/jquery-3.6.0.min.js') }}"></script>
 <script src="{{ asset('assets/frontend/js/popper.min.js') }}"></script>
 <script src="{{ asset('assets/frontend/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/validator.min.js') }}"></script>
 <script src="{{ asset('assets/frontend/js/jquery.appear.js') }}"></script>
 <script src="{{ asset('assets/frontend/js/jquery.easing.min.js') }}"></script>
 <script src="{{ asset('assets/frontend/js/jquery.magnific-popup.min.js') }}"></script>

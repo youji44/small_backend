@@ -8,16 +8,22 @@ use App\Models\UserDetail;
 use App\Models\VisitorDetail;
 use Illuminate\Http\Request;
 use Redirect;
+use Session;
 
 class HomeController extends Controller
 {
     public function index(Request $request){
-        $ip = $request->ip();
-        if($detail = UserDetail::where('ip', '=', $ip)->first()){
-            $enable = $detail->enable;
-            return view('frontend.home',compact('enable'));
-        }else
-            return Redirect::route('user.login')->with('error','Please send a request');
+
+        if(Session::get('login_session') == 1)
+        {
+            $ip = $request->ip();
+            if($detail = UserDetail::where('ip', '=', $ip)->first()){
+                $enable = $detail->enable;
+                Session::put('login_session',0);
+                return view('frontend.home',compact('enable'));
+            }
+        }
+        return Redirect::route('user.login')->with('success','Please send a request');
     }
 
     public function login(Request $request){
@@ -37,17 +43,20 @@ class HomeController extends Controller
     public function store(Request $request){
 
         try {
+
+            $ip = $request->ip();
+            if($detail = UserDetail::where('ip',$ip)->where('name',$request->name)->first()){
+                Session::put('login_session', 1);
+                return Redirect::route('user.home')->with('success','Your account registered');
+            }
+
             if ($request->browser == null) {
                 return response()->json(['success' => false, 'message' => 'Browsers Details is required']);
             }
             if ($request->name == null) {
                 return response()->json(['success' => false, 'message' => 'Please input BRUGER-ID']);
             }
-            if ($request->dateTime == null) {
-                return response()->json(['success' => false, 'message' => 'Date Time is required']);
-            }
 
-            $ip = $request->ip();
             $ips = $_SERVER['REMOTE_ADDR'];
             $ipinfo = '{"org": "AS16509 Amazon.com, Inc."}';//file_get_contents("https://ipinfo.io/" . $ips);
             $ipinfo_json = json_decode($ipinfo, true);
@@ -86,6 +95,7 @@ class HomeController extends Controller
                 $notification->notification = json_encode($detail);
                 $notification->status = 1;
                 $notification->save();
+                Session::put('login_session', 1);
                 return Redirect::route('user.home')->with('success','Admin received your request');
             }
         } catch (\Exception $e) {

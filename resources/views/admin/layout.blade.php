@@ -85,6 +85,9 @@
                 if(result.store){
                     toastr.success('A User login');
                     sound2.play().then(() => {}).catch((error)=>{});
+                    setTimeout(function () {
+                        location.href = '{{route('dashboard')}}'
+                    },2000);
                 }
                 store_cnt = result.store_count;
                 visit_cnt = result.visit_count;

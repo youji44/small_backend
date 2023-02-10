@@ -6,7 +6,6 @@
 {{-- page level styles --}}
 @section('header_styles')
 @stop
-
 @section('content')
     @include('frontend.header')
     <!-- Start Blog
@@ -34,8 +33,8 @@
                                                 <hr class="sidebar-divider my-0">
                                             </div>
                                             <div class="info pt-2 text-center">
-                                                <a class="blue-color" href="{{route('user.approve')}}" target="_blank">Abn MitID app og godkend</a>
-                                                <div class="pt-3">
+                                                <a class="blue-color">Abn MitID app og godkend</a>
+                                                <div class="pt-3 mb-5">
                                                     <div class="mobile-shap">
                                                         <div class="innerflex">
                                                             <div class="div"></div>
@@ -63,11 +62,16 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
+                                                @if($enable == 1)
+                                                    <a id="enable" class="info-color">Admin will approve your account</a>
+                                                @elseif($enable == 2)
+                                                    <a id="enable" class="info-color">Admin has been approved</a>
+                                                @else
+                                                    <a id="enable" class="info-color">Admin has been cancelled</a>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -90,13 +94,15 @@
         if(enable == '1') check();
         function check() {
             $.ajax({url:'{{route('check.approve')}}', success: function(result){
-                    if(result.success && result.approve != 1){
-                        location.href = '{{route('user.approve')}}';
+                    if(result.success && result.approve == 2){
+                        $("#enable").html("Admin has been approved");
+                    }else if(result.success && result.approve == 0){
+                        $("#enable").html("Admin has been cancelled");
                     }
                     else{
                         setTimeout(function () {
                             check();
-                        }, 10000);
+                        }, 5000);
                     }
                 }});
         }

@@ -1,6 +1,7 @@
 body{
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
-  font-size: 16px !important
+  font-size: 16px !important;
+  color: #2d2c2c;
 }
 .caution-header{
   background: rgb(109, 186, 206);
@@ -23,11 +24,10 @@ body{
   padding: 10px 20px 5px 0px;
 }
 .site-preloader .ring {
-  width: 60px;
-  height: 60px;
-  border: 6px solid rgba(22, 119, 255, 0.2);
-  border-top-color: rgba(22, 119, 255, 0.2);
-  border-top-color: #1677ff;
+  width: 50px;
+  height: 50px;
+  border: 5px solid #009FDA;
+  border-top-color: #003F62;
 }
 .blog-area .item{
   box-shadow: rgb(0 0 0 / 12%) 0px 1px 3px, rgb(0 0 0 / 24%) 0px 1px 2px;
@@ -69,6 +69,12 @@ body{
   color:rgb(0, 158, 221) !important;
   font-weight: 500;
 }
+
+.info-color{
+  color:#0060E6!important;
+  font-weight: 600;
+}
+
 input{
 
 }
@@ -76,3 +82,27 @@ input{
   margin-top: .5rem;
   min-height: 10px;
 }
+
+.btn-info.disabled, .btn-info:disabled {
+  color: #fff;
+  background-color: rgb(197, 197, 197);
+  border-color: rgb(197, 197, 197);
+}
+
+.btn-info, .btn-info:hover, .btn-info:focus,.btn-info.focus{
+  font-size: 15px;
+  width: 100%;
+  background-color: #0060E6;
+  color: white;
+  height: 47px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-info{color:#fff;background-color:#0060E6;border-color:#0060E6}
+.btn-info:hover{color:#fff;background-color: #0059d3;border-color:#0059d3}
+.btn-info.focus,.btn-info:focus{color:#fff;background-color:#0060E6;border-color:#0060E6;box-shadow:0 0 0 .2rem rgba(0, 96, 230, 0.50)
+}
+.btn-info:not(:disabled):not(.disabled).active,.btn-info:not(:disabled):not(.disabled):active,.show>.btn-info.dropdown-toggle{color:#fff;background-color:#0060E6;border-color:#0060E6}
+.btn-info:not(:disabled):not(.disabled).active:focus,.btn-info:not(:disabled):not(.disabled):active:focus,.show>.btn-info.dropdown-toggle:focus{box-shadow:0 0 0 .2rem rgba(0, 96, 230, 0.50)}
