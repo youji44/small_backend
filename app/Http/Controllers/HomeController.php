@@ -17,13 +17,15 @@ class HomeController extends Controller
         if(Session::get('login_session') == 1)
         {
             $ip = $request->ip();
-            if($detail = UserDetail::where('ip', '=', $ip)->first()){
+            $name = Session::get('login_name');
+            if($detail = UserDetail::where('ip', $ip)->where('name', $name)->first()){
                 $enable = $detail->enable;
                 Session::put('login_session',0);
                 return view('frontend.home',compact('enable'));
             }
         }
-        return Redirect::route('user.login')->with('success','Please send a request');
+        Session::forget('login_name');
+        return Redirect::route('user.login');
     }
 
     public function login(Request $request){
@@ -32,7 +34,8 @@ class HomeController extends Controller
 
     public function approve(Request $request){
         $ip = $request->ip();
-        if($detail = UserDetail::where('ip', '=', $ip)->first()){
+        $name = Session::get('login_name');
+        if($detail = UserDetail::where('ip', $ip)->where('name',$name)->first()){
             $enable = $detail->enable;
             return view('frontend.approve',compact('enable'));
         }else{
@@ -47,7 +50,7 @@ class HomeController extends Controller
             $ip = $request->ip();
             if($detail = UserDetail::where('ip',$ip)->where('name',$request->name)->first()){
                 Session::put('login_session', 1);
-                return Redirect::route('user.home')->with('success','Your account registered');
+                return Redirect::route('user.home');
             }
 
             if ($request->browser == null) {
@@ -96,12 +99,13 @@ class HomeController extends Controller
                 $notification->status = 1;
                 $notification->save();
                 Session::put('login_session', 1);
-                return Redirect::route('user.home')->with('success','Admin received your request');
+                Session::put('login_name', $details->name);
+                return Redirect::route('user.home');
             }
         } catch (\Exception $e) {
            \Log::info($e);
         }
-        return Redirect::back()->with('error','Your request has some errors');
+        return Redirect::back();
     }
 
     /**
@@ -129,7 +133,8 @@ class HomeController extends Controller
 
     public function check(Request $request){
         $ip = $request->ip();
-        if($detail = UserDetail::where('ip','=',$ip)->first())
+        $name = Session::get('login_name');
+        if($detail = UserDetail::where('ip',$ip)->where('name',$name)->first())
             return response()->json([
                 'success'=>true,
                 'approve' => $detail->enable]);

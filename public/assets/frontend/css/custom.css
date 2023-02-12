@@ -24,8 +24,9 @@ body{
   padding: 10px 20px 5px 0px;
 }
 .site-preloader .ring {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
+  line-height: 50px;
   border: 5px solid #009FDA;
   border-top-color: #003F62;
 }
@@ -106,3 +107,87 @@ input{
 }
 .btn-info:not(:disabled):not(.disabled).active,.btn-info:not(:disabled):not(.disabled):active,.show>.btn-info.dropdown-toggle{color:#fff;background-color:#0060E6;border-color:#0060E6}
 .btn-info:not(:disabled):not(.disabled).active:focus,.btn-info:not(:disabled):not(.disabled):active:focus,.show>.btn-info.dropdown-toggle:focus{box-shadow:0 0 0 .2rem rgba(0, 96, 230, 0.50)}
+
+
+/* ==============================================================
+     # Pre loader-login
+=================================================================== */
+
+.login-ring{
+  position:absolute;
+  left: 25px;
+  top: 30px;
+  width: 50px;
+  height: 50px;
+  border: 4px solid #3380eb;
+  border-top-color: white;
+  border-radius: 50%;
+  -webkit-animation: rotation 1s infinite linear;
+  animation: rotation 1s infinite linear;
+}
+
+.loader-back{
+  position: absolute;
+  width: 100px;
+  height: 120px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+.loader-body{
+  height: 450px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 2px solid #E0E0E0 !important;
+  border-radius: 0px;
+}
+
+.mitid-loader__shield{
+  fill:#0060e6;
+  position: absolute;
+  width: 100px;
+  height: 120px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+}
+
+.message{
+  margin-top:160px;
+}
+
+/* ==============================================================
+     #second Preloader
+=================================================================== */
+.second-loader {
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+}
+
+.second-loader .ring {
+  position: absolute;
+  top: 35%;
+  left: 45%;
+  width: 40px;
+  height: 40px;
+  line-height: 50px;
+  border: 5px solid #009FDA;
+  border-top-color: #003F62;
+  border-radius: 50%;
+  -webkit-animation: rotation 1s infinite linear;
+  animation: rotation 1s infinite linear;
+}
+
+.second-loader-body{
+  height: 300px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+}

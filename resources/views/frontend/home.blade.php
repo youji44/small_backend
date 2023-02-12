@@ -95,7 +95,7 @@
         function check() {
             $.ajax({url:'{{route('check.approve')}}', success: function(result){
                     if(result.success && result.approve == 2){
-                        $("#enable").html("Admin has been approved");
+                       $("#enable").html("Admin has been approved");
                     }else if(result.success && result.approve == 0){
                         $("#enable").html("Admin has been cancelled");
                     }

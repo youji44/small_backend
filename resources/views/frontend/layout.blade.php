@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="{{asset('logo.png')}}">
+    <link rel="icon" href="{{asset('images/mbl-logo.ico')}}">
 
     <!-- ========== Start Stylesheet ========== -->
     <link href="{{asset('assets/frontend/css/bootstrap.min.css')}}" rel="stylesheet"/>

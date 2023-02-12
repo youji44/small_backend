@@ -414,7 +414,7 @@
         Preloader Init
      ===============================================*/
     $(window).on('load', function () {
-        $('#site-preloader').delay('200').fadeOut();
+        $('#site-preloader').delay('1000').fadeOut();
     });
 
 
