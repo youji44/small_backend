@@ -782,16 +782,6 @@ a.btn-simple:hover {
   max-width: 100%;
 }
 
-
-@media (max-width: 576px) {
-  .blog-area{
-    padding: 1rem !important;
-  }
-  .blog-area .info {
-    padding: 20px !important;
-  }
-}
-
 @media (min-width: 576px) {
   .container-medium {
     max-width: 540px;

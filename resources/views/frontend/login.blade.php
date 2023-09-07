@@ -19,11 +19,11 @@
                         <div class="blog-item-box">
                             <div class="item">
                                 <div class="info">
-                                    <div class="text-center">
+                                    <div class="logo-content text-center">
                                         <img src="{{asset('images/danske-bank-logo.svg')}}">
                                     </div>
                                     <div id="login-body" class="blog-item-box p-3 pt-5" style="display: none">
-                                        <div class="item">
+                                        <div class="item login-content">
                                             <div class="info pb-2">
                                                 <div class="pb-3" style="align-items: center">
                                                     <span>Log på hos Danske Bank A/S</span>
@@ -48,7 +48,7 @@
                                                 </form>
                                                 <a class="info-color"><i class="icon-info"></i> Glemt bruger-ID?</a>
                                             </div>
-                                            <div class="info">
+                                            <div class="info help-content">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" value="" id="remember">
                                                     <label class="form-check-label" for="remember">
